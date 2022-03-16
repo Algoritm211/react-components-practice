@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import {animated, useSpring} from "react-spring";
 
-function App() {
+const App = () => {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const {opacity, transform} = useSpring({
+    opacity: isFlipped ? 1 : 0,
+    transform: `rotateX(${isFlipped ? 180 : 0}deg)`
+  })
+
+  const onCardToggle = () => {
+    setIsFlipped(prevState => !prevState);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div onClick={onCardToggle}>
+      <animated.div className='card front' style={{
+        opacity: opacity.to((o) => 1 - o),
+        transform
+      }} />
+      <animated.div className='card back' style={{
+        opacity,
+        transform: transform.to((t) => `${t} rotateX(180deg)`)
+      }} />
     </div>
   );
 }

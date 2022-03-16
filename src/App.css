@@ -1,38 +1,41 @@
-.App {
-  text-align: center;
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+  background: #f0f0f0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root > div {
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.card {
+  position: absolute;
+  max-width: 500px;
+  max-height: 500px;
+  width: 30rem;
+  height: 30rem;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.front,
+.back {
+  background-size: cover;
+}
+
+.back {
+  background-image: url(https://assets.newatlas.com/dims4/default/8c99e87/2147483647/strip/true/crop/5184x3888+0+0/resize/1280x960!/quality/90/?url=http%3A%2F%2Fnewatlas-brightspot.s3.amazonaws.com%2F14%2F1b%2Febf737204051b40d44ec4745956e%2Fp1044418.jpg);
+}
+
+.front {
+  background-image: url(https://cdn.bmwblog.com/wp-content/uploads/2017/07/New-Rolls-Royce-Phantom-18.jpg);
 }
